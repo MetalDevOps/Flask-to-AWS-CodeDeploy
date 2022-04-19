@@ -57,9 +57,10 @@ jobs:
           poetry install --no-interaction
 
         # Build App and Run Application Test
-      - name: Build Application and Run unit Test
-        run: |
-          nohup poetry run python run.py > log.txt 2>&1 & poetry run python -m pytest
+        # Deactivated
+      # - name: Build Application and Run unit Test
+      #   run: |
+      #     nohup poetry run python run.py > log.txt 2>&1 & poetry run python -m pytest
 
   continuous-deployment:
     runs-on: ubuntu-latest
