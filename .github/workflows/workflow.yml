@@ -58,17 +58,15 @@ jobs:
 
         # Build App and Run Application Test
       - name: Build Application and Run unit Test
-        # poetry run python run.py & pytest
         run: |
-          poetry --version
-          poetry shell
+          nohup poetry run python run.py > log.txt 2>&1 & poetry run python -m pytest
 
   continuous-deployment:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
-      
+
     needs: [continuous-integration]
     if: github.ref == 'refs/heads/master'
     steps:
