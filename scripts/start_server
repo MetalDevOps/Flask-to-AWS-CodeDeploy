@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /home/ec2-user/app
-poetry run supervisord -c supervisord.conf
+poetry run python -m supervisord -c supervisord.conf
 
