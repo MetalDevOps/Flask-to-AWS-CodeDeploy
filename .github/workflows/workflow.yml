@@ -58,11 +58,17 @@ jobs:
 
         # Build App and Run Application Test
       - name: Build Application and Run unit Test
-        # python run.py & pytest
-        run: poetry --version
+        # poetry run python run.py & pytest
+        run: |
+          poetry --version
+          poetry shell
 
   continuous-deployment:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      
     needs: [continuous-integration]
     if: github.ref == 'refs/heads/master'
     steps:
