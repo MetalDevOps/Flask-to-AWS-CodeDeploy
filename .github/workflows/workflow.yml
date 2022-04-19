@@ -37,7 +37,6 @@ jobs:
           poetry-version: 1.1.13
 
       - name: Configure poetry
-        shell: bash
         run: python -m poetry config virtualenvs.in-project true
 
       - name: Set up cache
@@ -54,14 +53,13 @@ jobs:
 
         # Install Python Dependencies
       - name: Install dependencies
-        shell: bash
         run: |
           poetry install --no-interaction
 
         # Build App and Run Application Test
       - name: Build Application and Run unit Test
         # python run.py & pytest
-        run: poetry shell
+        run: poetry --version
 
   continuous-deployment:
     runs-on: ubuntu-latest
