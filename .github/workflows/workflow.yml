@@ -31,30 +31,37 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           role-session-name: GitHubActions-${{ github.run_id }}
 
-      - name: Set up poetry
-        uses: abatilo/actions-poetry@v2.1.4
-        with:
-          poetry-version: 1.1.13
+      # - name: Set up poetry
+      #   uses: abatilo/actions-poetry@v2.1.4
+      #   with:
+      #     poetry-version: 1.1.13
 
-      - name: Configure poetry
-        run: python -m poetry config virtualenvs.in-project true
+      # - name: Configure poetry
+      #   run: python -m poetry config virtualenvs.in-project true
 
-      - name: Set up cache
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: .venv
-          key: venv-${{ hashFiles('**/poetry.lock') }}
+      # - name: Set up cache
+      #   uses: actions/cache@v2
+      #   id: cache
+      #   with:
+      #     path: .venv
+      #     key: venv-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Ensure cache is healthy
-        if: steps.cache.outputs.cache-hit == 'true'
-        shell: bash
-        run: timeout 10s python -m poetry run pip --version || rm -rf .venv
+      # - name: Ensure cache is healthy
+      #   if: steps.cache.outputs.cache-hit == 'true'
+      #   shell: bash
+      #   run: timeout 10s python -m poetry run pip --version || rm -rf .venv
 
+      #   # Install Python Dependencies
+      # - name: Install dependencies
+      #   run: |
+      #     poetry install --no-
         # Install Python Dependencies
       - name: Install dependencies
-        run: |
-          poetry install --no-interaction
+        run: pip install -r requirements.txt
+
+        # Build App and Run Application Test
+      - name: Build Application and Run unit Test
+        run: python run.py & pytest
 
         # Build App and Run Application Test
         # Deactivated
