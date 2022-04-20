@@ -9,6 +9,10 @@
 
 <http://44.197.177.204/>
 
+### Resultado do Deploy no CodeDeploy
+
+![](https://i.imgur.com/47VcACL.png)
+
 
 ## O CI/CD
 ![](img/cicd-flow.jpg)
