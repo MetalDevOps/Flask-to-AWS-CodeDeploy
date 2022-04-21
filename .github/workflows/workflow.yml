@@ -39,11 +39,13 @@ jobs:
 
   continuous-deployment:
     runs-on: self-hosted
+    environment:
+      name: prod
+      url: "http://44.197.177.204"
     permissions:
       id-token: write
       contents: write
-      
-    url: "http://44.197.177.204"
+
     needs: [continuous-integration]
     if: github.ref == 'refs/heads/master'
     steps:
