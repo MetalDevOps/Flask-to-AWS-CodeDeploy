@@ -42,7 +42,8 @@ jobs:
     permissions:
       id-token: write
       contents: write
-
+      
+    url: "http://44.197.177.204"
     needs: [continuous-integration]
     if: github.ref == 'refs/heads/master'
     steps:
